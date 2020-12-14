@@ -18,7 +18,7 @@ public class JDBCUtil {
     static {
         try {
             Properties pro = new Properties();
-            InputStream in = com.chinasoft.util.JDBCUtil.class.getClassLoader().getResourceAsStream("druid.properties");
+            InputStream in = JDBCUtil.class.getClassLoader().getResourceAsStream("druid.properties");
             pro.load(in);
             //  通过工厂类创建数据源对象
             dataSource = DruidDataSourceFactory.createDataSource(pro);
