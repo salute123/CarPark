@@ -2,6 +2,7 @@ package com.chinasoft.service.impl;
 
 import com.chinasoft.dao.UserDao;
 import com.chinasoft.dao.impl.UserDaoImpl;
+import com.chinasoft.domain.Ticket;
 import com.chinasoft.domain.User;
 import com.chinasoft.service.UserService;
 
@@ -41,4 +42,17 @@ public class UserServiceImpl implements UserService {
         }
 
     }
+
+        @Override
+    public void addTciket(Ticket ticket) {
+        dao.addTciket(ticket);
+    }
+
+
+    public List<Ticket> findticketAll() {
+        return dao.findticketAll();
+    }
+
+    
+
 }
