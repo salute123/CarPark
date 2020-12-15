@@ -68,7 +68,51 @@
 
 </header>
 
-<form action="${pageContext.servletContext.contextPath}/UserServlet" method="post" id="myForm">
+<div class="row" style="text-align: center"><h3>用户信息列表</h3></div>
+<div class="row">
+    <form method="post" action="<%--${pageContext.servletContext.contextPath}/userlist?pageNum=1&rows=5--%>">
+
+        <div class="col-lg-9">
+            <div class="col-lg-3" >
+                <div class="input-group">
+                    <span class="input-group-addon" id="sizing-addon1">姓名</span>
+                    <input type="text" class="form-control" placeholder="曹操" name="username"  aria-describedby="sizing-addon2">
+                </div>
+            </div>
+            <div class="col-lg-3" >
+                <div class="input-group">
+                    <span class="input-group-addon" id="sizing-addon2">车牌</span>
+                    <input type="text" class="form-control" placeholder="鄂A123456" name="carNumber" aria-describedby="sizing-addon2">
+                </div>
+            </div>
+            <div class="col-lg-4" >
+                <div class="input-group">
+                    <span class="input-group-addon" id="sizing-addon3">电话</span>
+                    <input type="text" class="form-control" placeholder=""  name="phoneNumber" aria-describedby="sizing-addon2">
+                </div>
+            </div>
+
+            <div class="col-lg-1">
+                <input class="btn btn btn-primary" type="submit" value="搜索">
+            </div>
+
+
+        </div>
+
+    </form>
+
+    <div class="col-lg-3">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-10">
+            <a class="btn btn-primary" href="${pageContext.servletContext.contextPath}/add.jsp">添加用户</a>
+            <a class="btn btn-primary" href="javascript:deleteSelected()">删除选中</a>
+        </div>
+
+    </div>
+
+</div>
+
+<form action="/UserServlet" method="post" id="myForm">
     <table border="1" class="table table-bordered table-hover">
         <tr class="success">
             <th><input type="checkbox" id="checkAll"></th>
@@ -86,7 +130,7 @@
                 <td>${user.phoneNumber}</td>
                 <td>${user.carNumber}</td>
                 <td>${user.username}</td>
-
+                <td><a class="btn btn-default btn-sm" href="${pageContext.servletContext.contextPath}/FindUserById?uid=${user.uid}">修改</a>&nbsp;<a class="btn btn-default btn-sm" href="${pageContext.servletContext.contextPath}/DeleteUser?uid=${user.uid}">删除</a></td>
             </tr>
         </c:forEach>
     </table>

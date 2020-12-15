@@ -1,6 +1,5 @@
 package com.chinasoft.web.servlet;
 
-import com.chinasoft.domain.User;
 import com.chinasoft.service.UserService;
 import com.chinasoft.service.impl.UserServiceImpl;
 
@@ -10,16 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
-@WebServlet("/UserServlet")
-public class UserServlet extends HttpServlet {
+@WebServlet("/DeleteUser")
+public class DeleteUser extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("utf-8");
-        UserService userList = new UserServiceImpl();
-        List<User> list = userList.findAll();
-        request.setAttribute("list",list);
-        request.getRequestDispatcher("/userlist.jsp").forward(request,response);
+        request.setCharacterEncoding("UTF-8");
+        String uid = request.getParameter("uid");
+        UserService userService = new UserServiceImpl();
+        userService.deleteUser(uid);
+        response.sendRedirect(request.getContextPath() + "/UserServlet");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

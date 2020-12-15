@@ -16,12 +16,40 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void addUser(User user) {
+        dao.addUser(user);
+    }
+
+    @Override
+    public User findUserById(String uid) {
+        return dao.findUserById(uid);
+    }
+
+    @Override
+    public void updateUser(User user) {
+        dao.updateUser(user);
+    }
+
+    @Override
+    public void deleteUser(String uid) {
+        dao.deleteUser(uid);
+    }
+
+    @Override
+    public void deleteCheckUser(String[] ids) {
+        for (String uid : ids) {
+            dao.deleteCheckUser(uid);
+        }
+    }
+
+        @Override
     public void addTciket(Ticket ticket) {
         dao.addTciket(ticket);
     }
 
-    @Override
+
     public List<Ticket> findticketAll() {
         return dao.findticketAll();
     }
+
 }
