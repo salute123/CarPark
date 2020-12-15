@@ -6,5 +6,11 @@ import java.util.List;
 
 public interface UserDao {
     List<User> findAll();
+    void addUser(User user);
+    User findUserById(String uid);
+    void updateUser(User user);
+    void deleteUser(String uid);
+    void deleteCheckUser(String uid);
+
 
 }
