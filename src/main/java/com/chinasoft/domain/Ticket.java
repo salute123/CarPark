@@ -6,18 +6,21 @@ public class Ticket {
     private Integer yid;
     private Integer uid;
     private String username;
+    private String carNumber;
     private Date ktime;
     private Date jtime;
     private Integer cost;
     private Integer online;
 
+
     public Ticket() {
     }
 
-    public Ticket(Integer yid, Integer uid, String username, Date ktime, Date jtime, Integer cost, Integer online) {
+    public Ticket(Integer yid, Integer uid, String username, String carNumber, Date ktime, Date jtime, Integer cost, Integer online) {
         this.yid = yid;
         this.uid = uid;
         this.username = username;
+        this.carNumber = carNumber;
         this.ktime = ktime;
         this.jtime = jtime;
         this.cost = cost;
@@ -46,6 +49,14 @@ public class Ticket {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getCarNumber() {
+        return carNumber;
+    }
+
+    public void setCarNumber(String carNumber) {
+        this.carNumber = carNumber;
     }
 
     public Date getKtime() {
@@ -86,6 +97,7 @@ public class Ticket {
                 "yid=" + yid +
                 ", uid=" + uid +
                 ", username='" + username + '\'' +
+                ", carNumber='" + carNumber + '\'' +
                 ", ktime=" + ktime +
                 ", jtime=" + jtime +
                 ", cost=" + cost +

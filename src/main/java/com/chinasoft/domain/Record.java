@@ -4,7 +4,7 @@ import java.util.Date;
 
 //出入记录类
 public class Record {
-  private Integer rid;
+   private Integer rid;
    private Date enterTime;
    private Date leaveTime;
    private Integer cid;//记录车辆的id
