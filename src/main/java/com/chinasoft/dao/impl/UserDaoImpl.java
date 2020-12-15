@@ -53,6 +53,7 @@ public class UserDaoImpl implements UserDao {
     public void deleteCheckUser(String uid) {
         String sql = "delete from user where uid = ?";
         template.update(sql, uid);
+
     }
 
     @Override
@@ -72,5 +73,6 @@ public class UserDaoImpl implements UserDao {
             e.printStackTrace();
         return null;
         }
+
     }
 }

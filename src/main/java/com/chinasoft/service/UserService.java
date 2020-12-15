@@ -2,6 +2,7 @@ package com.chinasoft.service;
 
 import com.chinasoft.domain.Ticket;
 import com.chinasoft.domain.User;
+import com.mchange.v2.uid.UidUtils;
 
 
 import java.util.List;
