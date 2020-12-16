@@ -1,5 +1,7 @@
 package com.chinasoft.dao;
 
+
+import com.chinasoft.domain.Ticket;
 import com.chinasoft.domain.User;
 
 import java.util.List;
@@ -14,6 +16,7 @@ public interface UserDao {
     void deleteCheckUser(String uid);
     List<User> findUserByPage(Integer pages, Integer row, Map<String, String[]> map);
     Integer findTotalCount(Map<String, String[]> map);
+
 
 
 }

@@ -43,7 +43,6 @@ public class UserServiceImpl implements UserService {
         }
 
     }
-
     @Override
     public PageInfo<User> findUserByPage(String pageNum, String rows, Map<String, String[]> map) {
         PageInfo<User> pageInfo = new PageInfo<>();
