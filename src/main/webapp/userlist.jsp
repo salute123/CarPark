@@ -89,6 +89,7 @@
         *zoom: 1;
     }
 </style>
+<div class="container">
 <header>
     <h2>停车管理系统</h2>
 
@@ -109,7 +110,7 @@
 
 
     <div class="col-lg-9">
-        <form method="post" action="<%--${pageContext.servletContext.contextPath}/userlist?pageNum=1&rows=5--%>">
+        <form method="post" action="${pageContext.servletContext.contextPath}/UserServlet?pageNum=1&rows=5">
             <div class="col-lg-3">
                 <div class="input-group">
                     <span class="input-group-addon" id="sizing-addon1">姓名</span>
@@ -160,7 +161,7 @@
                 <th>姓名</th>
                 <th>操作</th>
             </tr>
-            <c:forEach items="${list}" var="user">
+            <c:forEach items="${pageInfo.list}" var="user">
                 <tr>
                     <td><input type="checkbox" name="selectId" value="${user.uid}"></td>
                     <td>${user.uid}</td>
@@ -175,6 +176,38 @@
             </c:forEach>
         </table>
     </form>
+
+    <footer class="row">
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <c:if test="${pageInfo.pageNum !=1}">
+                    <li>
+                        <a href="${pageContext.servletContext.contextPath}/UserServlet?pageNum=${pageInfo.pageNum-1}&rows=5&username=${a}&carNumber=${b}&phoneNumber=${c}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                </c:if>
+                <c:forEach begin="1" end="${pageInfo.totalPage}" var="i" >
+                    <c:if test="${pageInfo.pageNum == i}">
+                        <li class="active"><a href="${pageContext.servletContext.contextPath}/UserServlet?pageNum=${i}&rows=5&username=${a}&carNumber=${b}&phoneNumber=${c}">${i}</a></li>
+                    </c:if>
+                    <c:if test="${pageInfo.pageNum != i}">
+                        <li><a href="${pageContext.servletContext.contextPath}/UserServlet?pageNum=${i}&rows=5&username=${a}&carNumber=${b}&phoneNumber=${c}">${i}</a></li>
+                    </c:if>
+                </c:forEach>
+                <c:if test="${pageInfo.pageNum != pageInfo.totalPage}">
+                    <li>
+                        <a href="${pageContext.servletContext.contextPath}/UserServlet?pageNum=${pageInfo.pageNum+1}&rows=5&username=${a}&carNumber=${b}&phoneNumber=${c}"  aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </c:if>
+                <span style="font-size: 28px;margin-left: 10px">共${pageInfo.totalCount}条记录,共${pageInfo.totalPage}页</span>
+            </ul>
+        </nav>
+    </footer>
+
+</div>
 </div>
 </body>
 </html>

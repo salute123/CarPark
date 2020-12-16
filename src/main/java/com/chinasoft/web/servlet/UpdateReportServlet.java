@@ -10,14 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/DeleteUser")
-public class DeleteUser extends HttpServlet {
+@WebServlet("/updateReport")
+public class UpdateReportServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        String uid = request.getParameter("uid");
+
+        //调用service层
         UserService userService = new UserServiceImpl();
-        userService.deleteUser(uid);
-        response.sendRedirect(request.getContextPath() + "/UserServlet?pageNum=1&rows=5");
+        //调用service层的findRecordAll()方法，根据record表里面的内容往report表里插入数据
+        userService.findrecordAll();
+        //重定向到reportList来显示数据
+        response.sendRedirect(request.getContextPath()+"/reportList?pageNum=1&rows=5");
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

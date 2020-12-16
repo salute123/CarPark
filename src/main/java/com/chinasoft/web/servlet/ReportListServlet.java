@@ -1,7 +1,7 @@
 package com.chinasoft.web.servlet;
 
 import com.chinasoft.domain.PageInfo;
-import com.chinasoft.domain.User;
+import com.chinasoft.domain.Report;
 import com.chinasoft.service.UserService;
 import com.chinasoft.service.impl.UserServiceImpl;
 
@@ -15,25 +15,44 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet("/UserServlet")
-public class UserServlet extends HttpServlet {
+@WebServlet("/reportList")
+public class ReportListServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        //调用service层
+//        UserService service = new UserServiceImpl();
+//        //获得结果
+//        List<Report> reportList = service.findReportAll();
+//        //存到域对象中
+//        request.setAttribute("report",reportList);
+//        //转发
+//        request.getRequestDispatcher("/reportlist.jsp").forward(request,response);
+
+
         request.setCharacterEncoding("UTF-8");
         String pageNum = request.getParameter("pageNum");
         String rows = request.getParameter("rows");
 //        将前台传来的参数封装到map中
         Map<String, String[]> map = request.getParameterMap();
         UserService service = new UserServiceImpl();
-       PageInfo<User> pageInfo =service.findUserByPage(pageNum,rows,map);
+        PageInfo<Report> pageInfo =service.findReportByPage(pageNum,rows,map);
         request.setAttribute("pageInfo",pageInfo);
-       HttpSession session = request.getSession();
+
+
+        HttpSession session = request.getSession();
         String username = request.getParameter("username");
-        String carNumber = request.getParameter("carNumber");
-        String phoneNumber = request.getParameter("phoneNumber");
+        String address = request.getParameter("address");
+        String email = request.getParameter("email");
         session.setAttribute("a",username);
-        session.setAttribute("b",carNumber);
-        session.setAttribute("c",phoneNumber);
-        request.getRequestDispatcher("/userlist.jsp").forward(request,response);
+        session.setAttribute("b",address);
+        session.setAttribute("c",email);
+        request.getRequestDispatcher("/reportlist.jsp").forward(request,response);
+
+
+
+
+
+
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

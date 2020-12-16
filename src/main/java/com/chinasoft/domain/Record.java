@@ -4,81 +4,103 @@ import java.util.Date;
 
 //出入记录类
 public class Record {
-   private Integer rid;
-   private Date enterTime;
-   private Date leaveTime;
-   private Integer cid;//记录车辆的id
-   private Integer settlement;//0为未结算，1为已结算
-   private String cost;//费用
+   private Integer id;
+   private String carNumber;
+   private Date startime;
+   private Date leavetime;
+   private String jiesuan;
+   private Integer uid;
+   private Integer yid;
+   private Integer cost;//费用
 
     public Record() {
     }
 
-    public Record(Integer rid, Date enterTime, Date leaveTime, Integer cid, Integer settlement, String cost) {
-        this.rid = rid;
-        this.enterTime = enterTime;
-        this.leaveTime = leaveTime;
-        this.cid = cid;
-        this.settlement = settlement;
+    public Record(Integer id, String carNumber, Date startime, Date leavetime, String jiesuan, Integer uid, Integer yid, Integer cost) {
+        this.id = id;
+        this.carNumber = carNumber;
+        this.startime = startime;
+        this.leavetime = leavetime;
+        this.jiesuan = jiesuan;
+        this.uid = uid;
+        this.yid = yid;
         this.cost = cost;
     }
 
-    public Integer getRid() {
-        return rid;
+    public Integer getId() {
+        return id;
     }
 
-    public void setRid(Integer rid) {
-        this.rid = rid;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public Date getEnterTime() {
-        return enterTime;
+    public String getCarNumber() {
+        return carNumber;
     }
 
-    public void setEnterTime(Date enterTime) {
-        this.enterTime = enterTime;
+    public void setCarNumber(String carNumber) {
+        this.carNumber = carNumber;
     }
 
-    public Date getLeaveTime() {
-        return leaveTime;
+    public Date getStartime() {
+        return startime;
     }
 
-    public void setLeaveTime(Date leaveTime) {
-        this.leaveTime = leaveTime;
+    public void setStartime(Date startime) {
+        this.startime = startime;
     }
 
-    public Integer getCid() {
-        return cid;
+    public Date getLeavetime() {
+        return leavetime;
     }
 
-    public void setCid(Integer cid) {
-        this.cid = cid;
+    public void setLeavetime(Date leavetime) {
+        this.leavetime = leavetime;
     }
 
-    public Integer getSettlement() {
-        return settlement;
+    public String getJiesuan() {
+        return jiesuan;
     }
 
-    public void setSettlement(Integer settlement) {
-        this.settlement = settlement;
+    public void setJiesuan(String jiesuan) {
+        this.jiesuan = jiesuan;
     }
 
-    public String getCost() {
+    public Integer getUid() {
+        return uid;
+    }
+
+    public void setUid(Integer uid) {
+        this.uid = uid;
+    }
+
+    public Integer getYid() {
+        return yid;
+    }
+
+    public void setYid(Integer yid) {
+        this.yid = yid;
+    }
+
+    public Integer getCost() {
         return cost;
     }
 
-    public void setCost(String cost) {
+    public void setCost(Integer cost) {
         this.cost = cost;
     }
 
     @Override
     public String toString() {
         return "Record{" +
-                "rid=" + rid +
-                ", enterTime=" + enterTime +
-                ", leaveTime=" + leaveTime +
-                ", cid=" + cid +
-                ", settlement=" + settlement +
+                "id=" + id +
+                ", carNumber='" + carNumber + '\'' +
+                ", startime=" + startime +
+                ", leavetime=" + leavetime +
+                ", jiesuan='" + jiesuan + '\'' +
+                ", uid=" + uid +
+                ", yid=" + yid +
                 ", cost='" + cost + '\'' +
                 '}';
     }
