@@ -4,39 +4,49 @@ import java.util.Date;
 
 //出入记录类
 public class Record {
-  private Integer rid;
-   private Date enterTime;
+  private Integer id;
+  private String carNumber;
+   private Date startTime;
    private Date leaveTime;
-   private Integer cid;//记录车辆的id
-   private Integer settlement;//0为未结算，1为已结算
-   private String cost;//费用
+   private Integer jiesuan;
+   private Integer uid;
+   private Integer yid;
 
     public Record() {
     }
 
-    public Record(Integer rid, Date enterTime, Date leaveTime, Integer cid, Integer settlement, String cost) {
-        this.rid = rid;
-        this.enterTime = enterTime;
+    public Record(Integer id, String carNumber, Date startTime, Date leaveTime, Integer jiesuan, Integer uid, Integer yid) {
+        this.id = id;
+        this.carNumber = carNumber;
+        this.startTime = startTime;
         this.leaveTime = leaveTime;
-        this.cid = cid;
-        this.settlement = settlement;
-        this.cost = cost;
+        this.jiesuan = jiesuan;
+        this.uid = uid;
+        this.yid = yid;
     }
 
-    public Integer getRid() {
-        return rid;
+    public Integer getId() {
+        return id;
     }
 
-    public void setRid(Integer rid) {
-        this.rid = rid;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public Date getEnterTime() {
-        return enterTime;
+    public String getCarNumber() {
+        return carNumber;
     }
 
-    public void setEnterTime(Date enterTime) {
-        this.enterTime = enterTime;
+    public void setCarNumber(String carNumber) {
+        this.carNumber = carNumber;
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
     }
 
     public Date getLeaveTime() {
@@ -47,39 +57,41 @@ public class Record {
         this.leaveTime = leaveTime;
     }
 
-    public Integer getCid() {
-        return cid;
+    public Integer getJiesuan() {
+        return jiesuan;
     }
 
-    public void setCid(Integer cid) {
-        this.cid = cid;
+    public void setJiesuan(Integer jiesuan) {
+        this.jiesuan = jiesuan;
     }
 
-    public Integer getSettlement() {
-        return settlement;
+    public Integer getUid() {
+        return uid;
     }
 
-    public void setSettlement(Integer settlement) {
-        this.settlement = settlement;
+    public void setUid(Integer uid) {
+        this.uid = uid;
     }
 
-    public String getCost() {
-        return cost;
+    public Integer getYid() {
+        return yid;
     }
 
-    public void setCost(String cost) {
-        this.cost = cost;
+    public void setYid(Integer yid) {
+        this.yid = yid;
     }
 
     @Override
     public String toString() {
         return "Record{" +
-                "rid=" + rid +
-                ", enterTime=" + enterTime +
+                "id=" + id +
+                ", carNumber='" + carNumber + '\'' +
+                ", startTime=" + startTime +
                 ", leaveTime=" + leaveTime +
-                ", cid=" + cid +
-                ", settlement=" + settlement +
-                ", cost='" + cost + '\'' +
+                ", jiesuan=" + jiesuan +
+                ", uid=" + uid +
+                ", yid=" + yid +
                 '}';
     }
+
 }
