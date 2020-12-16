@@ -16,7 +16,7 @@ public class DeleteCheckUser extends HttpServlet {
         String[] ids = request.getParameterValues("selectId");
         UserServiceImpl service = new UserServiceImpl();
         service.deleteCheckUser(ids);
-        response.sendRedirect(request.getContextPath()+"/UserServlet");
+        response.sendRedirect(request.getContextPath()+"/UserServlet?pageNum=1&rows=5");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
