@@ -19,12 +19,14 @@ public interface UserService {
     void updateUser(User user);
     void deleteUser(String uid);
     void deleteCheckUser(String[] ids);
+    PageInfo<User> findUserByPage(String pageNum, String rows, Map<String, String[]> parameterMap);
+
+
+    //qjl
     void findrecordAll();
     List<Report> findReportAll();
     PageInfo<Report> findReportByPage(String pageNum, String rows, Map<String, String[]> map);
     void deleteReport(String  id);
-     void deleteCheckReport(String[] ids);
-    PageInfo<User> findUserByPage(String pageNum, String rows, Map<String, String[]> parameterMap);
-
+    void deleteCheckReport(String[] ids);
 
 }

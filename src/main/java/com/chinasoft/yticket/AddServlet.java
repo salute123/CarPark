@@ -3,19 +3,16 @@ package com.chinasoft.yticket;
 import com.chinasoft.domain.Ticket;
 import com.chinasoft.service.UserService;
 import com.chinasoft.service.impl.UserServiceImpl;
-import org.apache.commons.beanutils.BeanUtils;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Map;
+
 
 @WebServlet("/tadd")
 public class AddServlet extends HttpServlet {

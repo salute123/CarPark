@@ -2,10 +2,8 @@ package com.chinasoft.dao.impl;
 import com.chinasoft.dao.UserDao;
 import com.chinasoft.domain.Record;
 import com.chinasoft.domain.Report;
-import com.chinasoft.domain.Ticket;
 import com.chinasoft.domain.User;
 import com.chinasoft.util.JDBCUtil;
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import java.text.SimpleDateFormat;
@@ -59,26 +57,6 @@ public class UserDaoImpl implements UserDao {
     public void deleteCheckUser(String uid) {
         String sql = "delete from user where uid = ?";
         template.update(sql, uid);
-
-    }
-
-    @Override
-    public void addTciket(Ticket ticket) {
-
-            String sql = "insert into yticket(uid,username,carNumber,ktime,jtime,cost) values (?,?,?,?,?,?)";
-            template.update(sql,ticket.getUid(),ticket.getUsername(),ticket.getCarNumber(),ticket.getKtime(),ticket.getJtime(),ticket.getCost());
-
-    }
-
-    @Override
-    public List<Ticket> findticketAll() {
-        try {
-            String sql = "select * from yticket";
-            return template.query(sql,new BeanPropertyRowMapper<>(Ticket.class));
-        } catch (DataAccessException e) {
-            e.printStackTrace();
-        return null;
-        }
 
     }
 
@@ -143,14 +121,14 @@ public class UserDaoImpl implements UserDao {
                  //如果结算不为空值
                  if (record.getJiesuan()!=null){
                      //将date类型数据转换成string类型,去掉时分秒,只需要年月日
-                     String format = sdf.format(record.getLeaveTime());
+                     String format = sdf.format(record.getLeavetime());
                      //遍历keySet日期(key),如果map里面没有该日期,就把此日期和钱都加进去,如果有就只需要加钱(value)
                      Set<String> keySet = map.keySet();
                      if(!keySet.contains(format)) {
-                         map.put(format, record.getJiesuan());
+                         map.put(format, record.getCost());
                      }else {
                          Integer integer = map.get(format);
-                         integer = integer + record.getJiesuan();
+                         integer = integer + record.getCost();
                          map.put(format,integer);
                      }
               }
@@ -172,7 +150,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public List<Report> findUserByPage(Integer pages, Integer row, Map<String, String[]> map) {
+    public List<Report> findReportByPage(Integer pages, Integer row, Map<String, String[]> map) {
         StringBuilder sql = new StringBuilder("select * from report where 1 = 1 ");
         Set<String> keySet = map.keySet();
 //        声明集合装参数
@@ -196,7 +174,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public Integer findTotalCount(Map<String, String[]> map) {
+    public Integer findTotalReports(Map<String, String[]> map) {
         StringBuilder sql = new StringBuilder("select count(id) from report where 1 = 1 ");
         Set<String> keySet = map.keySet();
 //        声明集合装参数

@@ -4,24 +4,27 @@ import java.util.Date;
 
 //出入记录类
 public class Record {
-  private Integer id;
-  private String carNumber;
-   private Date startTime;
-   private Date leaveTime;
-   private Integer jiesuan;
+   private Integer id;
+   private String carNumber;
+   private Date startime;
+   private Date leavetime;
+   private String jiesuan;
    private Integer uid;
    private Integer yid;
+   private Integer cost;//费用
+
     public Record() {
     }
 
-    public Record(Integer id, String carNumber, Date startTime, Date leaveTime, Integer jiesuan, Integer uid, Integer yid) {
+    public Record(Integer id, String carNumber, Date startime, Date leavetime, String jiesuan, Integer uid, Integer yid, Integer cost) {
         this.id = id;
         this.carNumber = carNumber;
-        this.startTime = startTime;
-        this.leaveTime = leaveTime;
+        this.startime = startime;
+        this.leavetime = leavetime;
         this.jiesuan = jiesuan;
         this.uid = uid;
         this.yid = yid;
+        this.cost = cost;
     }
 
     public Integer getId() {
@@ -40,27 +43,27 @@ public class Record {
         this.carNumber = carNumber;
     }
 
-    public Date getStartTime() {
-        return startTime;
+    public Date getStartime() {
+        return startime;
     }
 
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
+    public void setStartime(Date startime) {
+        this.startime = startime;
     }
 
-    public Date getLeaveTime() {
-        return leaveTime;
+    public Date getLeavetime() {
+        return leavetime;
     }
 
-    public void setLeaveTime(Date leaveTime) {
-        this.leaveTime = leaveTime;
+    public void setLeavetime(Date leavetime) {
+        this.leavetime = leavetime;
     }
 
-    public Integer getJiesuan() {
+    public String getJiesuan() {
         return jiesuan;
     }
 
-    public void setJiesuan(Integer jiesuan) {
+    public void setJiesuan(String jiesuan) {
         this.jiesuan = jiesuan;
     }
 
@@ -80,17 +83,25 @@ public class Record {
         this.yid = yid;
     }
 
+    public Integer getCost() {
+        return cost;
+    }
+
+    public void setCost(Integer cost) {
+        this.cost = cost;
+    }
+
     @Override
     public String toString() {
         return "Record{" +
                 "id=" + id +
                 ", carNumber='" + carNumber + '\'' +
-                ", startTime=" + startTime +
-                ", leaveTime=" + leaveTime +
-                ", jiesuan=" + jiesuan +
+                ", startime=" + startime +
+                ", leavetime=" + leavetime +
+                ", jiesuan='" + jiesuan + '\'' +
                 ", uid=" + uid +
                 ", yid=" + yid +
+                ", cost='" + cost + '\'' +
                 '}';
     }
-
 }
