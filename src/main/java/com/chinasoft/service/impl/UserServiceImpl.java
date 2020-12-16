@@ -40,6 +40,7 @@ public class UserServiceImpl implements UserService {
         for (String uid : ids) {
             dao.deleteCheckUser(uid);
         }
+
     }
 
         @Override
@@ -51,5 +52,7 @@ public class UserServiceImpl implements UserService {
     public List<Ticket> findticketAll() {
         return dao.findticketAll();
     }
+
+    
 
 }
