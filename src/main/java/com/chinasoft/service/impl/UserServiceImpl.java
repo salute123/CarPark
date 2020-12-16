@@ -2,11 +2,12 @@ package com.chinasoft.service.impl;
 
 import com.chinasoft.dao.UserDao;
 import com.chinasoft.dao.impl.UserDaoImpl;
-import com.chinasoft.domain.Ticket;
+import com.chinasoft.domain.PageInfo;
 import com.chinasoft.domain.User;
 import com.chinasoft.service.UserService;
 
 import java.util.List;
+import java.util.Map;
 
 public class UserServiceImpl implements UserService {
     private UserDao dao = new UserDaoImpl();
@@ -42,17 +43,22 @@ public class UserServiceImpl implements UserService {
         }
 
     }
-
-        @Override
-    public void addTciket(Ticket ticket) {
-        dao.addTciket(ticket);
+    @Override
+    public PageInfo<User> findUserByPage(String pageNum, String rows, Map<String, String[]> map) {
+        PageInfo<User> pageInfo = new PageInfo<>();
+        Integer pages = Integer.valueOf(pageNum);
+        Integer row = Integer.valueOf(rows);
+//        分页查询
+        List<User> list = dao.findUserByPage(pages,row,map);
+//        获取总的记录数
+        Integer totalCount = dao.findTotalCount(map);
+//        计算总的页数
+        Integer totalPage = totalCount%row == 0?(totalCount/row):(totalCount/row+1);
+        pageInfo.setPageNum(pages);
+        pageInfo.setRows(row);
+        pageInfo.setList(list);
+        pageInfo.setTotalCount(totalCount);
+        pageInfo.setTotalPage(totalPage);
+        return pageInfo;
     }
-
-
-    public List<Ticket> findticketAll() {
-        return dao.findticketAll();
-    }
-
-    
-
 }

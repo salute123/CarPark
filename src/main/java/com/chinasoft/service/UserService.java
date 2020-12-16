@@ -1,11 +1,13 @@
 package com.chinasoft.service;
 
-import com.chinasoft.domain.Ticket;
+
+import com.chinasoft.domain.PageInfo;
 import com.chinasoft.domain.User;
 import com.mchange.v2.uid.UidUtils;
 
 
 import java.util.List;
+import java.util.Map;
 
 public interface UserService {
     List<User> findAll();
@@ -15,7 +17,7 @@ public interface UserService {
     void updateUser(User user);
     void deleteUser(String uid);
     void deleteCheckUser(String[] ids);
-    void addTciket(Ticket ticket);
-    List<Ticket> findticketAll();
+    PageInfo<User> findUserByPage(String pageNum, String rows, Map<String, String[]> parameterMap);
+
 
 }
