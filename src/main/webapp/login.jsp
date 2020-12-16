@@ -40,7 +40,7 @@
         <hr/>
         <div class="form-group" style="text-align: center;">
             <input class="btn btn btn-primary" type="submit" value="管理员登录">
-            <input class="btn btn btn-primary" type="submit" value="登录">
+            <input class="btn btn btn-primary" type="submit" value="用户登录">
         </div>
     </form>
 

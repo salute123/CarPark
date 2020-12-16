@@ -11,7 +11,6 @@ public class Record {
    private Integer jiesuan;
    private Integer uid;
    private Integer yid;
-
     public Record() {
     }
 
