@@ -4,20 +4,17 @@ import java.util.Date;
 
 //日报表类
 public class Report {
-    private Integer rid;
-    private Date reportTime;
-    private Double total;//总费用统计
-    private Integer uid;//关联用户id
-    private Integer id;//关联系统id
+    private Integer id;
+    private Date date;
+    private Double income;//总费用统计
+
     public Report() {
     }
 
-    public Report(Integer rid, Date reportTime, Double total, Integer uid, Integer id) {
-        this.rid = rid;
-        this.reportTime = reportTime;
-        this.total = total;
-        this.uid = uid;
+    public Report(Integer id, Date date, Double income) {
         this.id = id;
+        this.date = date;
+        this.income = income;
     }
 
     public Integer getId() {
@@ -28,46 +25,28 @@ public class Report {
         this.id = id;
     }
 
-    public Integer getRid() {
-        return rid;
+    public Date getDate() {
+        return date;
     }
 
-    public void setRid(Integer rid) {
-        this.rid = rid;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
-    public Date getReportTime() {
-        return reportTime;
+    public Double getIncome() {
+        return income;
     }
 
-    public void setReportTime(Date reportTime) {
-        this.reportTime = reportTime;
-    }
-
-    public Double getTotal() {
-        return total;
-    }
-
-    public void setTotal(Double total) {
-        this.total = total;
-    }
-
-    public Integer getUid() {
-        return uid;
-    }
-
-    public void setUid(Integer uid) {
-        this.uid = uid;
+    public void setIncome(Double income) {
+        this.income = income;
     }
 
     @Override
     public String toString() {
         return "Report{" +
-                "rid=" + rid +
-                ", reportTime=" + reportTime +
-                ", total=" + total +
-                ", uid=" + uid +
-                ", id=" + id +
+                "id=" + id +
+                ", date=" + date +
+                ", income=" + income +
                 '}';
     }
 }
