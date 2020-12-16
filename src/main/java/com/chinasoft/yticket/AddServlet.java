@@ -1,8 +1,8 @@
 package com.chinasoft.yticket;
 
 import com.chinasoft.domain.Ticket;
-import com.chinasoft.service.UserService;
-import com.chinasoft.service.impl.UserServiceImpl;
+import com.chinasoft.service.TicketService;
+import com.chinasoft.service.impl.TicketServiceImpl;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +13,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
+//添加月票
 @WebServlet("/tadd")
 public class AddServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -25,7 +25,7 @@ public class AddServlet extends HttpServlet {
             String ktime = request.getParameter("ktime");
             String jtime = request.getParameter("jtime");
             String cost = request.getParameter("cost");
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
             Date date1 = simpleDateFormat.parse(ktime);
             Date date2 = simpleDateFormat.parse(jtime);
             Ticket ticket = new Ticket();
@@ -35,9 +35,9 @@ public class AddServlet extends HttpServlet {
             ticket.setKtime(date1);
             ticket.setJtime(date2);
             ticket.setCost(Integer.parseInt(cost));
-            UserService service = new UserServiceImpl();
+            TicketService service = new TicketServiceImpl();
             service.addTciket(ticket);
-            response.sendRedirect("/tquery");
+            response.sendRedirect(request.getContextPath()+"/tquery");
         } catch (ParseException e) {
             e.printStackTrace();
         }
